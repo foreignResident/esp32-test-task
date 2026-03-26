@@ -1,0 +1,49 @@
+menu "-> Custom Project Configuration"
+    config LED_PIN
+        int "LED PIN"
+        default 12
+        help
+            Pin used to signal commands on receiver board.
+    config IS_SERVER_BOARD
+        bool "Is server board"
+        default y
+        help
+            Set yes for wifi transmitter board and no for receiver.
+    config MULTICAST_GROUP_IP
+        string "Multicast ip"
+        default "239.0.0.1"
+        help
+            Multicast group to subscribe/send events over. Should be same for receiver and transmitter.
+    config MULTICAST_PORT
+        int "Multicast port"
+        default 4444
+        help
+            Port for multicast group. Sould be same for receiver and transmitter.
+    config MULTICAST_TTL
+        int "Multicast TTL"
+        default 1
+        help
+            Leave 1 to stay on the current subnet only. Will be droped by the first router.
+
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "test"
+        help
+            SSID (network name) for the example to connect to.
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "123456789"
+        help
+            WiFi password (WPA or WPA2) for the example to use.
+    config ESP_WIFI_CHANNEL
+        int "WiFi Channel"
+        range 1 13
+        default 1
+        help
+            WiFi channel (network channel) for the example to use.
+    config ESP_MAX_STA_CONN
+        int "Maximal STA connections"
+        default 4
+        help
+            Max number of the STA connects to AP.
+endmenu
