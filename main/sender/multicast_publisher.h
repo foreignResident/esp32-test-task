@@ -17,4 +17,6 @@
 #define MULTICAST_PORT     CONFIG_MULTICAST_PORT     //4444
 #define MULTICAST_TTL      CONFIG_MULTICAST_TTL      //1
 
+int init_multicast_socket();
+void close_multicast_socket();
 esp_err_t esp_send_multicast(void);

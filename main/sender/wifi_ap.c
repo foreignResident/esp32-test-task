@@ -65,6 +65,12 @@ static void multicast_task(void *)
 {
     TickType_t last_wake_time = xTaskGetTickCount();
     const TickType_t interval = pdMS_TO_TICKS(3000);
+    int res = init_multicast_socket();
+
+    if(res < 0) {
+        ESP_LOGE(TAG, "init multicast socket error %d", res);
+        return;
+    }
 
     while (1)
     {
@@ -74,6 +80,7 @@ static void multicast_task(void *)
     }
 
     // never reached — but good practice if you ever break the loop
+    close_multicast_socket();
     vTaskDelete(NULL);
 }
 
